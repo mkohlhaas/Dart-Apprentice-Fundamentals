@@ -3,11 +3,11 @@
 import 'package:final_project/math.dart' as math;
 
 void main() {
-  // stativ variables
+  // static variables
   introduction();
   constants();
   singletons();
-  // stativ methods
+  // static methods
   staticMethods();
   creatingNewObjects();
 }
@@ -15,11 +15,12 @@ void main() {
 void introduction() {
   print('// introduction');
   final value = SomeClass.myProperty;
+  print(value);
   SomeClass.myMethod();
 }
 
 class SomeClass {
-  static int myProperty = 0;
+  static int myProperty = 42;
   static void myMethod() {
     print('Hello, Dart!');
   }
@@ -48,19 +49,19 @@ void constants() {
 //   static final MySingleton instance = MySingleton._();
 // }
 
-class MySingleton {
-  // MySingleton._internal(); // an often used name: 'internal'
-  MySingleton._();
-  static final MySingleton _instance = MySingleton._();
+class Singleton {
+  // MySingleton._internal(); // an often used name: '_internal'
+  Singleton._();
+  static final _instance = Singleton._();
   // (unnamed) factory constructor because we return an already existing instance and hides the fact that it is a singleton
-  factory MySingleton() => _instance;
+  factory Singleton() => _instance;
 }
 
 void singletons() {
   print('\n// singletons');
   // final mySingleton = MySingleton.instance;
   final mySingleton =
-      MySingleton(); // user does not need to know that it is a singleton
+      Singleton(); // user does not need to know that it is a singleton
   print(mySingleton);
 }
 
@@ -86,6 +87,9 @@ void staticMethods() {
 }
 
 class User {
+  final String _name;
+  final int _id;
+
   const User({int id = 0, String name = 'anonymous'})
       : _id = id,
         _name = name;
@@ -103,20 +107,17 @@ class User {
 
   // 3. A factory constructor can be const if it’s a forwarding constructor, but a static method can’t.
 
-  // factory User.fromJson(Map<String, Object> json) {
-  //   final userId = json['id'] as int;
-  //   final userName = json['name'] as String;
-  //   return User(id: userId, name: userName);
-  // }
+  factory User.fromJsonFactory(Map<String, Object> json) {
+    final userId = json['id'] as int;
+    final userName = json['name'] as String;
+    return User(id: userId, name: userName);
+  }
 
   static User fromJson(Map<String, Object> json) {
     final userId = json['id'] as int;
     final userName = json['name'] as String;
     return User(id: userId, name: userName);
   }
-
-  final String _name;
-  final int _id;
 
   String toJson() {
     return '{"id":$_id,"name":"$_name"}';
@@ -131,6 +132,9 @@ class User {
 void creatingNewObjects() {
   print('\n// creatingNewObjects');
   final map = {'id': 10, 'name': 'Sandra'};
+
   final sandra = User.fromJson(map);
   print(sandra);
+  final sandra1 = User.fromJsonFactory(map);
+  print(sandra1);
 }

@@ -4,12 +4,13 @@
 // Sound null safety distinguishes nullable and non-nullable types.
 // 'late' and '!' opt out of sound null safety, so use them carefully.
 
+import 'dart:io' show sleep;
+
 void main() {
   // Null overview
   whatNullMeans();
   problemWithNull();
   nullableVsNonNullable();
-
   // Handling nullable types
   handlingNullableTypes();
   typePromotion();
@@ -28,8 +29,8 @@ void main() {
 void whatNullMeans() {
   print('// whatNullMeans');
   int postalCode = 12345;
-  // int postalCode = -1;
   // int postalCode = null;
+  print(postalCode);
 }
 
 void problemWithNull() {
@@ -63,8 +64,6 @@ void nullableVsNonNullable() {
   print(message);
 }
 
-// Handling nullable types
-
 void handlingNullableTypes() {
   print('\n// handlingNullableTypes');
   String? name;
@@ -74,8 +73,8 @@ void handlingNullableTypes() {
 void typePromotion() {
   print('\n// typePromotion');
   String? name;
-  name =
-      'Ray'; // the Dart analyzer knows name cannot be null => type promotion from 'String?' to 'String'
+  name = 'Ray';
+  // the Dart analyzer knows 'name' cannot be null => type promotion from 'String?' to 'String'
   print(name.length);
 
   // the Dart analyzer can even do flow analysis
@@ -83,8 +82,8 @@ void typePromotion() {
     if (anInteger == null) {
       return false;
     }
-    return !anInteger
-        .isNegative; // Dart analyzer promoted anInteger from 'int?' to 'int'
+    // Dart analyzer promoted 'anInteger' from 'int?' to 'int'
+    return !anInteger.isNegative;
   }
 }
 
@@ -102,22 +101,14 @@ void typePromotion() {
 void ifNullOperator() {
   print('\n// ifNullOperator');
   String? message;
-  final String text = message ?? 'Error';
+  final String text = message ?? 'Default Message';
   print(text);
-
-  // the same:
-  // String text;
-  // if (message == null) {
-  //   text = 'Error';
-  // } else {
-  //   text = message;
-  // }
-  // print(text);
 }
 
 void nullAwareAssignmentOperator() {
   print('\n// nullAwareAssignmentOperator');
   double? fontSize;
+  // fontSize = 10.0;
   fontSize ??= 20.0;
   print(fontSize);
 }
@@ -132,9 +123,10 @@ void nullAwareAccess() {
 void nullAssertionOperator() {
   print('\n// nullAssertionOperator/bang operator');
   // I'm sure nullableString is not null so I tell the Dart analyzer it is not null with '!'
-  //String nonNullableString = nullableString!; // type promotion from String? to String because of '!'
+  // String nonNullableString = nullableString!; // type promotion from String? to String because of '!'
 
-  // Dart analyzer's flow analysis fails for this function
+  // Dart analyzer's flow analysis fails for this function.
+  // We might want to help the compiler with '!', but don't lie or else run-time error!
   bool? isBeautiful(String? item) {
     if (item == 'flower') {
       return true;
@@ -145,8 +137,8 @@ void nullAssertionOperator() {
   }
 
   // bool flowerIsBeautiful = isBeautiful('whatever');         // compile-time error (Dart analyzer's flow analysis fails)
-  // bool flowerIsBeautiful = isBeautiful('whatever')!;        // run-time error
-  // bool flowerIsBeautiful = isBeautiful('whatever') as bool; // run-time error
+  // bool flowerIsBeautiful = isBeautiful('whatever')!;        // run-time error!!!
+  // bool flowerIsBeautiful = isBeautiful('whatever') as bool; // run-time error!!!
   // bool flowerIsBeautiful = isBeautiful('whatever') ?? true; // ok
 
   // bool flowerIsBeautiful = isBeautiful('garbage');          // compile-time error (Dart analyzer's flow analysis fails)
@@ -157,6 +149,7 @@ void nullAssertionOperator() {
   // bool flowerIsBeautiful = isBeautiful('flower');           // compile-time error (Dart analyzer's flow analysis fails)
   // bool flowerIsBeautiful = isBeautiful('flower')!;          // ok
   // bool flowerIsBeautiful = isBeautiful('flower') as bool;   // ok
+
   bool flowerIsBeautiful = isBeautiful('flower') ?? true; // ok
   print(flowerIsBeautiful);
 }
@@ -171,17 +164,22 @@ void nullAwareCascadeOperator() {
   User user = User()
     ..name = 'Ray'
     ..id = 42;
+  print(user);
+  print(user.name);
+  print(user.id);
+  String? lengthString = user.name?.length.toString();
+  print(lengthString);
 
+  // user1 is null
   User? user1;
+  // values won't be set!!!
   user1
-    ?..name = 'Ray' // only once at the beginning of the chain
+    ?..name = 'Ray' // '?' only once at the beginning of the chain
     ..id = 42;
-  String? lengthString = user1?.name?.length.toString(); // chaining null-aware access operator
-}
-
-void initializingNonNullableClassFields() {
-  print('\n// initializingNonNullableClassFields');
-  // final user = User(name: null);
+  // chaining null-aware access operator
+  String? lengthString1 = user1?.name?.length.toString();
+  print(user1); // null
+  print(lengthString1); // null
 }
 
 void nullableInstanceVariables() {
@@ -225,11 +223,11 @@ class TextWidget {
   }
 }
 
-// 'late' means lazy evaluation; it's only evaluated when needed
+// 'late' means lazy evaluation; only evaluated when needed
 void lateKeyword() {
   print('\n// lateKeyword');
-  final user = User();
-  print(user.name);
+  var sc = SomeClass();
+  print(sc.value);
 }
 
 // class User {
@@ -256,14 +254,18 @@ void lateKeyword() {
 // }
 
 // class User {
-//   late String name; // you promise Dart to initialize 'name' before it's being used!
+//   late String name; // you promise Dart to initialize 'name' before it's being used!!!
 // }
 
 class SomeClass {
-  late String? value = doHeavyCalculation(); // doHeavyCalculation will only run if needed
+  // doHeavyCalculation will only run if needed
+  late String? value = doHeavyCalculation();
 
   // ignore: body_might_complete_normally_nullable
   String? doHeavyCalculation() {
-    // do heavy calculation
+    //
+    print("doing heavy calculation");
+    sleep(Duration(seconds: 2));
+    return "Done!";
   }
 }

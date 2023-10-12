@@ -3,36 +3,39 @@
 import 'dart:math';
 
 void main() {
+  // Printing output
+  print('// Printing output');
   print('Hello, Dart!');
-
-  /// Printing output
-
   print('Hello, Dart Apprentice reader!');
 
-  /// Arithmetic operations
+  // Arithmetic operations
 
-  /// Simple operations
+  // Simple operations
+  print('\n// Simple operations');
   print(2 + 6);
   print(10 - 2);
   print(2 * 4);
   print(24 / 3);
-
   print(2 + 6);
   print(2 + 6);
 
-  /// Decimal numbers
+  // Decimal numbers
+  print('\n// Decimal numbers');
   print(22 / 7);
   print(22 ~/ 7);
 
-  /// The Euclidean modulo operation
+  // The Euclidean modulo operation
+  print('\n// The Euclidean modulo operation');
   print(28 % 10);
 
-  /// Order of operations
+  // Order of operations
+  print('\n// Order of operations');
   print(((8000 / (5 * 10)) - 32) ~/ (29 % 5));
   print(350 / 5 + 2);
   print(350 / (5 + 2));
 
-  /// Math functions
+  // Math functions
+  print('\n// Math functions');
   print(sin(45 * pi / 180));
   print(cos(135 * pi / 180));
   print(sqrt(2));
@@ -40,16 +43,18 @@ void main() {
   print(min(-5, -10));
   print(max(sqrt(2), pi / 2));
 
-  /// Naming data
+  // Naming data
 
-  /// Variables
+  // Variables
+  print('\n// Variables');
   int number = 10;
   number = 15;
   double apple = 3.14159;
   print(10.isEven);
   print(3.14159.round());
 
-  /// Type safety
+  // Type safety
+  print('\n// Type safety');
   int myInteger = 10;
   // myInteger = 3.14159; // Error. That not allowed.
 
@@ -63,12 +68,14 @@ void main() {
   myVariable = 3.14159; // OK
   myVariable = 'ten'; // OK
 
-  /// Type inference
+  // Type inference
+  print('\n// Type inference');
   var someNumber = 10;
   someNumber = 15; // OK
   // someNumber = 3.14159; // Error
 
-  /// Constants
+  // Constants
+  print('\n// Constants');
   const myConstant = 10;
   // myConstant = 0; // Not allowed.
 
@@ -77,7 +84,8 @@ void main() {
   final hoursSinceMidnight = DateTime.now().hour;
   // hoursSinceMidnight = 0; // Not allowed.
 
-  /// Increment and decrement
+  // Increment and decrement
+  print('\n// Increment and decrement');
   var counter = 0;
   counter += 1;
   counter -= 1;

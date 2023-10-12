@@ -11,10 +11,11 @@ void main() {
 
 void creatingSets() {
   print('// creatingSets');
-  // final Set<int> someSet = {};
-  final someSet = <int>{};
+  final someSet = <int>{1, 2, 3};
+  final Set<int> otherSet = {1, 2, 3};
   final anotherSet = {1, 2, 3, 1};
   print(someSet);
+  print(otherSet);
   print(anotherSet);
 }
 
@@ -22,31 +23,36 @@ void operationsOnSets() {
   print('\n// operationsOnSets');
   final desserts = {'cake', 'pie', 'donut'};
   print(desserts.contains('cake')); // true
-  print(desserts.contains('cookies'));
+  print(desserts.contains('cookies')); // false
 
   final drinks = <String>{};
   drinks.add('cola');
   drinks.add('water');
   drinks.add('cola');
-  print(drinks);
+  print(drinks); // {cola, water}
 
   drinks.remove('water');
-  print(drinks);
+  print(drinks); // {cola}
 
   drinks.addAll(['juice', 'coffee', 'milk']);
   drinks.addAll({'juices', 'coffees', 'milks'});
-  print(drinks);
+  print(drinks); // {cola, juice, coffee, milk, juices, coffees, milks}
 
+  // for-in loop
+  print('\n// for-in loop');
   for (final drink in drinks) {
     print("I'm drinking $drink.");
   }
 
+  // remove
+  print('\n// remove');
   final beverages = drinks;
   print(drinks);
   beverages.remove('milk');
   print(drinks);
 
-  final liquids = drinks.toSet();
+  // ignore: prefer_collection_literals
+  final liquids = ['juice', 'coffee', 'milk'].toSet();
   print(drinks);
   liquids.remove('coffee');
   print(drinks);
@@ -63,16 +69,16 @@ void intersectionUnionDifference() {
   final setA = {8, 2, 3, 1, 4};
   final setB = {1, 6, 5, 4};
   final intersection = setA.intersection(setB);
-  print(intersection);
+  print('intersection: $intersection');
 
   final union = setA.union(setB);
-  print(union);
+  print('union: $union');
 
   final differenceA = setA.difference(setB);
-  print(differenceA);
+  print('differenceA: $differenceA');
 
   final differenceB = setB.difference(setA);
-  print(differenceB);
+  print('differenceB: $differenceB');
 }
 
 void findingDuplicates() {
@@ -83,7 +89,7 @@ void findingDuplicates() {
     final randomInt = randomGenerator.nextInt(10) + 1;
     randomIntList.add(randomInt);
   }
-  print(randomIntList);
+  print('randomIntList: $randomIntList');
 
   final uniqueValues = <int>{};
   final duplicates = <int>{};
@@ -93,5 +99,5 @@ void findingDuplicates() {
     }
     uniqueValues.add(number);
   }
-  print(duplicates);
+  print('duplicates: $duplicates');
 }

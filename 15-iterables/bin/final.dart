@@ -43,14 +43,9 @@ void operationsOnIterables() {
   print(numberElements);
 }
 
-void creatingIterablesUsingGenerators() {
-  print('\n// creatingIterablesUsingGenerators');
-
-  final squares = hundredSquares();
-  for (int square in squares) {
-    print(square);
-  }
-}
+// Dart has two generator functions (both use 'yield' in their bodies):
+// - Synchronous  Generator: Returns an Iterable object.
+// - Asynchronous Generator: Returns a  Stream   object.
 
 // sync* : Read as “sync star”. You’re telling Dart that this function is a synchronous generator.
 // You must return an Iterable from such a function.
@@ -65,9 +60,16 @@ Iterable<int> hundredSquares() sync* {
   }
 }
 
+void creatingIterablesUsingGenerators() {
+  print('\n// creatingIterablesUsingGenerators');
+  final squares = hundredSquares();
+  for (int square in squares) {
+    print(square);
+  }
+}
+
 void creatingIterablesUsingIterators() {
   print('\n// creatingIterablesUsingIterators');
-
   final squares = HundredSquares();
   for (int square in squares) {
     print(square);

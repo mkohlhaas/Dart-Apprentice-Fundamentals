@@ -3,18 +3,20 @@
 const global = 'Hello, world';
 
 void main() {
-  /// Comparison Operators
+  // Comparison Operators
+  print('// Comparison Operators');
 
   // const bool yes = true;
   // const bool no = false;
   const yes = true;
   const no = false;
 
-  /// Boolean Operators
+  // Boolean Operators
+  print('\n// Boolean Operators');
 
   const doesOneEqualTwo = (1 == 2);
-  print('doesOneEqualTwo: $doesOneEqualTwo');
   // const doesOneEqualTwo = 1 == 2;
+  print('doesOneEqualTwo: $doesOneEqualTwo');
   print(2 == 2.0);
 
   const doesOneNotEqualTwo = (1 != 2);
@@ -33,7 +35,8 @@ void main() {
   print(2 >= 1);
   print(2 >= 2);
 
-  /// Boolean Logic
+  // Boolean Logic
+  print('\n// Boolean Logic');
 
   const isSunny = false;
   const isFinished = true;
@@ -62,13 +65,15 @@ void main() {
   print('orFirst: $orFirst');
   print('andFirst: $andFirst');
 
-  /// String Equality
+  // String Equality
+  print('\n// String Equality');
 
   const guess = 'dog';
   const guessEqualsCat = guess == 'cat';
   print('guessEqualsCat: $guessEqualsCat');
 
-  /// The If Statement
+  // The If Statement
+  print('\n// The If Statement');
 
   if (2 > 1) {
     print('Yes, 2 is greater than 1.');
@@ -94,7 +99,8 @@ void main() {
   }
   print(command);
 
-  /// Variable Scope
+  // Variable Scope
+  print('\n// Variable Scope');
 
   const local = 'Hello, main';
 
@@ -110,7 +116,8 @@ void main() {
   print(local);
   // print(insideIf); // Not allowed!
 
-  /// The Ternary Conditional Operator
+  // The Ternary Conditional Operator
+  print('\n// The Ternary Conditional Operator');
 
   const score = 83;
   String message;
@@ -124,7 +131,8 @@ void main() {
   message = (score >= 60) ? 'You passed' : 'You failed';
   print('message: $message');
 
-  /// Switch Statements
+  // Switch Statements
+  print('\n// Switch Statements');
 
   const number = 3;
   if (number == 0) {
@@ -144,19 +152,14 @@ void main() {
   switch (number) {
     case 0:
       print('zero');
-      break;
     case 1:
       print('one');
-      break;
     case 2:
       print('two');
-      break;
     case 3:
       print('three');
-      break;
     case 4:
       print('four');
-      break;
     default:
       print('something else');
   }
@@ -165,33 +168,28 @@ void main() {
   switch (weather) {
     case 'sunny':
       print('Put on sunscreen.');
-      break;
     case 'snowy':
       print('Get your skis.');
-      break;
     case 'cloudy':
     case 'rainy':
       print('Bring an umbrella.');
-      break;
     default:
       print("I'm not familiar with that weather.");
   }
 
-  /// Enumerated Types
+  // Enumerated Types
+  print('\n// Enumerated Types');
 
   // Find the enum defined below, outside of the main() function.
   const weatherToday = Weather.cloudy;
   switch (weatherToday) {
     case Weather.sunny:
       print('Put on sunscreen.');
-      break;
     case Weather.snowy:
       print('Get your skis.');
-      break;
     case Weather.cloudy:
     case Weather.rainy:
       print('Bring an umbrella.');
-      break;
   }
 
   print(weatherToday);
@@ -205,5 +203,3 @@ enum Weather {
   cloudy,
   rainy,
 }
-
-// enum Weather { sunny, snowy, cloudy, rainy }

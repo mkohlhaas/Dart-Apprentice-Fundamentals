@@ -25,9 +25,9 @@ class User {
 void assigningValuesAndPrinting() {
   print('// assigningValuesAndPrinting');
   final user = User();
+  print(user);
   user.name = 'Ray';
   user.id = 42;
-
   print(user);
 }
 
@@ -49,7 +49,7 @@ void cascadeNotation() {
 }
 
 class MyClass {
-  var myProperty = 1;
+  int myProperty = 1;
 }
 
 void objectsAsReferences() {
@@ -63,7 +63,6 @@ void objectsAsReferences() {
 
 class Password {
   String _plainText = 'pass123';
-
   String get plainText => _plainText;
 
   set plainText(String text) {
@@ -101,9 +100,9 @@ void setters() {
   final text = myPassword.plainText; // getter
   print(text);
 
-  final shortPassword = Password();
-  shortPassword.plainText = 'aaa';
-  final result = shortPassword.plainText;
+  final tooShortPassword = Password();
+  tooShortPassword.plainText = 'aaa';
+  final result = tooShortPassword.plainText;
   print(result);
 
   final email = Email();
@@ -113,7 +112,6 @@ void setters() {
 }
 
 // No Need to Overuse Getters And Setters
-
 // class Email {
 //   String _value = '';
 //   String get value => _value;

@@ -12,6 +12,7 @@ void main() {
 
 void anatomyOfDartFunction() {
   print('// anatomyOfDartFunction');
+
   String compliment(int number) {
     return '$number is a very nice number.';
   }
@@ -23,6 +24,7 @@ void anatomyOfDartFunction() {
 
 void usingMultipleParameters() {
   print('\n// usingMultipleParameters');
+
   void helloPersonAndPet(String person, String pet) {
     print('Hello, $person, and your furry friend, $pet!');
   }
@@ -32,6 +34,7 @@ void usingMultipleParameters() {
 
 void makingParametersOptional() {
   print('\n// makingParametersOptional');
+
   String fullName(String first, String last, [String? title]) {
     if (title != null) {
       return '$title $first $last';
@@ -46,6 +49,7 @@ void makingParametersOptional() {
 
 void providingDefaultValues() {
   print('\n// providingDefaultValues');
+
   bool withinTolerance(int value, [int min = 0, int max = 10]) {
     return min <= value && value <= max;
   }
@@ -59,6 +63,7 @@ void providingDefaultValues() {
 // named parameters are by default optional
 void namingParameters() {
   print('\n// namingParameters');
+
   bool withinTolerance(int value, {int min = 0, int max = 10}) {
     return min <= value && value <= max;
   }
@@ -76,6 +81,7 @@ void namingParameters() {
 // 'required' attribute is necessary to make a named parameter required
 void makingNamedParametersRequired() {
   print('\n// makingNamedParametersRequired');
+
   bool withinTolerance({
     required int value,
     int min = 0,
@@ -91,6 +97,7 @@ void makingNamedParametersRequired() {
 
 void avoidingSideEffects() {
   print('\n// avoidingSideEffects');
+
   // void hello() {
   //   print('Hello!');
   // }
@@ -116,6 +123,7 @@ void avoidingSideEffects() {
 
 void optionalTypes() {
   print('\n// optionalTypes');
+
   // String compliment(int number) {
   //   return '$number is a very nice number.';
   // }
@@ -131,13 +139,13 @@ void optionalTypes() {
 }
 
 void arrowFunctions() {
-  print('\n// arrowFunctions');
+  print('\n// arrowFunctions/expression body');
+
   // int add(int a, int b) {
   //   return a + b;
   // }
 
   add(int a, int b) => a + b;
-  // int add(int a, int b) => a + b;
   print(add(2, 3));
 
   // void printTripled(int number) {
@@ -146,6 +154,5 @@ void arrowFunctions() {
   // }
 
   printTripled(int number) => print(number * 3);
-  // void printTripled(int number) => print(number * 3);
   printTripled(4);
 }

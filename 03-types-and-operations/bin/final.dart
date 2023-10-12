@@ -1,7 +1,8 @@
 // ignore_for_file: unused_local_variable
 
 void main() {
-  /// Type inference
+  // Type inference
+  print('// Type inference');
 
   // int myInteger = 10;
   // double myDouble = 3.14;
@@ -13,16 +14,18 @@ void main() {
   const myDouble = 3.14;
 
   num myNumber = 3.14;
-  print(myNumber is double);
-  print(myNumber is int);
-  print(myNumber.runtimeType);
+  print(myNumber is double); // true
+  print(myNumber is int); // false
+  print(myNumber.runtimeType); // double
 
-  /// Type conversion
+  // Type conversion
+  print('\n// Type conversion');
 
   var integer = 100;
   var decimal = 12.5;
   // integer = decimal;
   integer = decimal.toInt();
+  print(decimal);
   print(integer);
 
   const hourlyRate = 19.5;
@@ -37,6 +40,7 @@ void main() {
   // final actuallyDouble = 3 as double;
   const double actuallyDouble = 3;
   const wantADouble = 3.0;
+  print(wantADouble.runtimeType);
 
   num someNumber = 3;
   // print(someNumber.isEven);
@@ -44,10 +48,14 @@ void main() {
   print((3.0).toString());
   print(someInt.isEven);
   print(4.isEven);
-  final someDouble = someNumber as double;
-  // final someDouble = someNumber.toDouble();
 
-  /// Object and dynamic types
+  // print("Runtime Error");
+  // final someDouble = someNumber as double;
+  // final someDouble = someNumber as int; // Ok. But: Unnecessary cast.
+  final someDouble = someNumber.toDouble();
+
+  // Object and dynamic types
+  print('\n// Object and dynamic types');
 
   // var myVariable = 42;
   // myVariable = 'hello'; // compile-time error
