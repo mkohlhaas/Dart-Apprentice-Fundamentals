@@ -59,9 +59,9 @@ void operationsOnSets() {
   print(liquids);
 }
 
-// Operations know from lists are also possible:
-// collection if
-// collection for
+// Operations from lists are also possible:
+// collection-if
+// collection-for
 // spread operators (...)
 
 void intersectionUnionDifference() {

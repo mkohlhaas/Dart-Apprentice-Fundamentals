@@ -29,6 +29,7 @@ void operationsOnIterables() {
 
   // final myIterable = Iterable();
   Iterable<String> myIterable = ['red', 'blue', 'green'];
+  print(myIterable);
 
   final thirdElement = myIterable.elementAt(2);
   print(thirdElement);
@@ -63,7 +64,7 @@ Iterable<int> hundredSquares() sync* {
 void creatingIterablesUsingGenerators() {
   print('\n// creatingIterablesUsingGenerators');
   final squares = hundredSquares();
-  for (int square in squares) {
+  for (final int square in squares) {
     print(square);
   }
 }
@@ -71,7 +72,7 @@ void creatingIterablesUsingGenerators() {
 void creatingIterablesUsingIterators() {
   print('\n// creatingIterablesUsingIterators');
   final squares = HundredSquares();
-  for (int square in squares) {
+  for (final int square in squares) {
     print(square);
   }
 }

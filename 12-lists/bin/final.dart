@@ -145,8 +145,8 @@ void loopingOverElementsOfList() {
 
 // Influenced by Flutter (makes it easier to build UI):
 // - spread operator (...)
-// - collection if
-// - collection for
+// - collection-if
+// - collection-for
 // in a Flutter app, you see lists of Widget elements (Text, Icon, Button, ...)
 void codeAsUi() {
   print('\n// codeAsUi');
@@ -161,7 +161,7 @@ void codeAsUi() {
   // print(desserts);
 
   // spread operator
-  const desserts = ['donuts', ...pastries, ...candy];
+  const desserts = ['donuts', ...pastries, ...candy, 'cheese cake'];
   print(desserts);
 
   // collection-if

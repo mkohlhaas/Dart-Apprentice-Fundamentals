@@ -104,9 +104,7 @@ void operationsOnMap() {
 void mapsClassesJson() {
   print('\n// mapsClassesJson');
 
-  final userObject =
-      User(1234, 'John', ['john@example.com', 'jhagemann@example.com']);
-
+  final userObject = User(1234, 'John', ['john@example.com', 'jhagemann@example.com']);
   final userMap = userObject.toJson();
   print(userMap);
 
@@ -114,8 +112,7 @@ void mapsClassesJson() {
   final userString = jsonEncode(userMap);
   print(userString);
 
-  final jsonString =
-      '{"id":4321,"name":"Marcia","emails":["marcia@example.com"]}';
+  final jsonString = '{"id":4321,"name":"Marcia","emails":["marcia@example.com"]}';
 
   // final jsonMap = jsonDecode(jsonString);
   dynamic jsonMap = jsonDecode(jsonString);

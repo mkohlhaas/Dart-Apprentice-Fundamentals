@@ -44,10 +44,10 @@ void constants() {
   print(backgroundColor.toRadixString(16).toUpperCase());
 }
 
-// class MySingleton {
-//   MySingleton._();
-//   static final MySingleton instance = MySingleton._();
-// }
+class MySingleton {
+  MySingleton._();
+  static final MySingleton uniqueInstance = MySingleton._();
+}
 
 class Singleton {
   // MySingleton._internal(); // an often used name: '_internal'
@@ -59,10 +59,10 @@ class Singleton {
 
 void singletons() {
   print('\n// singletons');
-  // final mySingleton = MySingleton.instance;
-  final mySingleton =
-      Singleton(); // user does not need to know that it is a singleton
-  print(mySingleton);
+  final mySingleton1 = MySingleton.uniqueInstance;
+  final mySingleton2 = Singleton(); // user does not need to know that it is a singleton
+  print(mySingleton1);
+  print(mySingleton2);
 }
 
 class Math {
